@@ -25693,9 +25693,9 @@ async function run() {
         if (!fs.existsSync(archivePath)) {
             throw new Error(`Archive not found: ${archivePath}`);
         }
-        core.info(`Uploading archive to ${registryUrl}/publish...`);
+        core.info(`Uploading archive to ${registryUrl}/api/package...`);
         const body = fs.readFileSync(archivePath);
-        const response = await fetch(`${registryUrl}/publish`, {
+        const response = await fetch(`${registryUrl}/api/package`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
