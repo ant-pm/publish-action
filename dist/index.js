@@ -25695,13 +25695,14 @@ async function run() {
         }
         core.info(`Uploading archive to ${registryUrl}/api/package...`);
         const body = fs.readFileSync(archivePath);
+        const formData = new FormData();
+        formData.append("file", new Blob([body], { type: "application/gzip" }), "archive.tar.gz");
         const response = await fetch(`${registryUrl}/api/package`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
-                "Content-Type": "application/gzip",
             },
-            body,
+            body: formData,
         });
         if (!response.ok) {
             const text = await response.text();
