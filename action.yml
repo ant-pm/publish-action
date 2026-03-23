@@ -1,9 +1,9 @@
-name: 'Publish Package'
-description: 'Uploads a tar.gz to a registry backend using GitHub OIDC authentication'
+name: "Publish Package"
+description: "Uploads a tar.gz to a registry backend using GitHub OIDC authentication"
 inputs:
-  registry_url:
-    description: 'The base URL of the registry backend'
-    required: true
+    registry_url:
+        description: "The base URL of the registry backend"
+        required: true
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+    using: "node24"
+    main: "dist/index.js"
