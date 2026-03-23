@@ -1,0 +1,20 @@
+{
+  "name": "publish-action",
+  "version": "1.0.0",
+  "description": "GitHub Action that uploads a tar.gz to a registry backend using OIDC authentication",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && ncc build src/index.ts -o dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@vercel/ncc": "^0.38.4",
+    "typescript": "^6.0.2"
+  }
+}
