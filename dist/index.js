@@ -25688,7 +25688,8 @@ async function run() {
     try {
         const registryUrl = core.getInput("registry_url", { required: true });
         core.info("Requesting OIDC token...");
-        const token = await core.getIDToken(registryUrl);
+        const audience = new URL(registryUrl).origin;
+        const token = await core.getIDToken(audience);
         const archivePath = "/tmp/archive.tar.gz";
         if (!fs.existsSync(archivePath)) {
             throw new Error(`Archive not found: ${archivePath}`);
