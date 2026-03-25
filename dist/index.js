@@ -25694,11 +25694,11 @@ async function run() {
         if (!fs.existsSync(archivePath)) {
             throw new Error(`Archive not found: ${archivePath}`);
         }
-        core.info(`Uploading archive to ${registryUrl}/api/package...`);
+        core.info(`Uploading archive to ${registryUrl}...`);
         const body = fs.readFileSync(archivePath);
         const formData = new FormData();
         formData.append("file", new Blob([body], { type: "application/gzip" }), "archive.tar.gz");
-        const response = await fetch(`${registryUrl}/api/package`, {
+        const response = await fetch(registryUrl, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,

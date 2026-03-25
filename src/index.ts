@@ -15,7 +15,7 @@ async function run(): Promise<void> {
             throw new Error(`Archive not found: ${archivePath}`);
         }
 
-        core.info(`Uploading archive to ${registryUrl}/api/package...`);
+        core.info(`Uploading archive to ${registryUrl}...`);
         const body = fs.readFileSync(archivePath);
         const formData = new FormData();
         formData.append(
@@ -24,7 +24,7 @@ async function run(): Promise<void> {
             "archive.tar.gz",
         );
 
-        const response = await fetch(`${registryUrl}/api/package`, {
+        const response = await fetch(registryUrl, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
